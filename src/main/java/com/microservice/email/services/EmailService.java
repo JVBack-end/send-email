@@ -23,7 +23,7 @@ public class EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public EmailModel sendEmail(@Valid EmailRequest emailRequest) {
+    public EmailModel sendEmail(EmailRequest emailRequest) {
         EmailModel emailModel = new EmailModel();
         BeanUtils.copyProperties(emailRequest,emailModel);
         emailModel.setSendDateEmail(LocalDateTime.now());
