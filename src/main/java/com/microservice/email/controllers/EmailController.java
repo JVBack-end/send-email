@@ -19,11 +19,8 @@ public class EmailController {
     EmailService emailService;
 
     @PostMapping("/sending-email")
-    public ResponseEntity<EmailModel> sedingEmail(@RequestBody @Valid EmailRequest emailRequest) {
-        EmailModel emailModel = new EmailModel();
-        BeanUtils.copyProperties(emailRequest,emailModel);
-        emailService.sendEmail(emailModel);
-        return new ResponseEntity<>(emailModel, HttpStatus.CREATED);
+    public ResponseEntity<EmailModel> sedingEmail(@RequestBody EmailRequest emailRequest) {
+        return new ResponseEntity<>(emailService.sendEmail(emailRequest), HttpStatus.CREATED);
     }
 
 }
